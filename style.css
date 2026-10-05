@@ -442,6 +442,21 @@ body {
     margin-top: 12px;
 }
 
+.redirect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.redirect .secure-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+
 .qr-view {
     width: 600px;
     max-width: calc(100% - 48px);
@@ -729,8 +744,41 @@ body {
         font-size: 21px;
     }
 
-    .method-grid, .bank-grid, .wallet-grid, .duitnow-grid {
+    .method-grid, .wallet-grid, .duitnow-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .bank-grid {
+        display: flex;
+        gap: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+
+    .bank-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .bank-page {
+        flex: 0 0 100%;
+        min-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(92px, auto));
+        gap: 12px;
+        scroll-snap-align: start;
+    }
+
+    .bank-page .bank {
+        min-width: 0;
+    }
+
+    #bankDots {
+        display: none;
     }
 
     .method {

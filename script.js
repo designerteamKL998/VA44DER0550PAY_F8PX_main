@@ -4,8 +4,8 @@ let current="landing",method=null,selectedBank=null,selectedWallet=null,bankPage
 const banks=[
 ["assets/bank/bank-maybank.svg","Maybank"],["assets/bank/bank-Cimb.svg","CIMB Bank"],["assets/bank/bank-Pb.svg","Public Bank"],
 ["assets/bank/bank-RHB.svg","RHB Bank"],["assets/bank/bank-HLB.svg","Hong Leong Bank"],["assets/bank/bank-AmBank.svg","AmBank"],
-["assets/bank/bank-affin.svg","Affin Bank"],["assets/bank/bank-alliance.svg","Alliance Bank"],["assets/bank/bank-bsn.svg","Bank Simpanan Nasional"],
-["assets/bank/bank-ISLAM.svg","Bank Islam"],["assets/bank/bank-ocbc.svg","OCBC Bank"]
+["assets/bank/bank-affin-l.svg","Affin Bank"],["assets/bank/bank-alliance-l.svg","Alliance Bank"],["assets/bank/bank-bsn-l.svg","Bank Simpanan Nasional"],
+["assets/bank/bank-ISLAM-l.svg","Bank Islam"],["assets/bank/bank-ocbc-l.svg","OCBC Bank"]
 ];
 const wallets=[
 ["assets/icn-grabpay.svg","GrabPay"],["assets/icn-touchnGo.svg","Touch n Go eWallet"],["assets/icn-shopeepay.svg","ShopeePay"],["assets/icn-boost.svg","Boost"]
@@ -27,14 +27,39 @@ document.getElementById("methodProceed").onclick=()=>{if(!method)return;show(met
 
 function renderBanks(){
  const grid=document.getElementById("bankGrid"),dots=document.getElementById("bankDots"),start=bankPage*6;
+ const isMobile=window.matchMedia("(max-width:640px)").matches;
  grid.innerHTML="";
- banks.slice(start,start+6).forEach(([src,name])=>{
-  const b=document.createElement("button");b.type="button";b.className="bank"+(selectedBank===name?" selected":"");
-  b.innerHTML=`<img class="bank-logo" src="${src}" alt="${name}"><span class="check">✓</span>`;
-  b.onclick=()=>{selectedBank=name;renderBanks();updateBankButton()};grid.appendChild(b);
- });
+
+ if(isMobile){
+   // Mobile: 3 columns x 2 rows per swipe page (6 banks per page).
+   for(let page=0; page<Math.ceil(banks.length/6); page++){
+     const pageEl=document.createElement("div");
+     pageEl.className="bank-page";
+     banks.slice(page*6,page*6+6).forEach(([src,name])=>{
+       const b=document.createElement("button");
+       b.type="button";
+       b.className="bank"+(selectedBank===name?" selected":"");
+       b.innerHTML=`<img class="bank-logo" src="${src}" alt="${name}"><span class="check">✓</span>`;
+       b.onclick=()=>{selectedBank=name;renderBanks();updateBankButton()};
+       pageEl.appendChild(b);
+     });
+     grid.appendChild(pageEl);
+   }
+ }else{
+   banks.slice(start,start+6).forEach(([src,name])=>{
+     const b=document.createElement("button");
+     b.type="button";
+     b.className="bank"+(selectedBank===name?" selected":"");
+     b.innerHTML=`<img class="bank-logo" src="${src}" alt="${name}"><span class="check">✓</span>`;
+     b.onclick=()=>{selectedBank=name;renderBanks();updateBankButton()};
+     grid.appendChild(b);
+   });
+ }
+
  dots.innerHTML="";
- for(let i=0;i<Math.ceil(banks.length/6);i++){const d=document.createElement("button");d.className=i===bankPage?"active":"";d.onclick=()=>{bankPage=i;renderBanks()};dots.appendChild(d)}
+ if(!isMobile){
+   for(let i=0;i<Math.ceil(banks.length/6);i++){const d=document.createElement("button");d.className=i===bankPage?"active":"";d.onclick=()=>{bankPage=i;renderBanks()};dots.appendChild(d)}
+ }
  updateBankButton();
 }
 function updateBankButton(){document.getElementById("bankProceed").innerHTML=selectedBank?`Proceed with ${selectedBank} <img src="assets/icn-arrow-w.svg">`:`Select a Bank <img src="assets/icn-arrow-w.svg">`}
