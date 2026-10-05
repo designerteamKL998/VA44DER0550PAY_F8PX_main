@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VaderPay Payment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+<header class="topbar">
+  <button class="back-btn" id="backBtn" type="button" aria-label="Back"><img style="width: 15px;" src="assets/icn-arrow-back.svg" /><span class="back-label">Back</span></button>
+  <img src="assets/logo-vaderpay.svg" class="vaderpay" alt="VaderPay">
+  <!--<div class="timer"><img src="assets/icn-timer.svg" alt=""><strong id="timer">04:15</strong></div>-->
+</header>
+
+<!-- LANDING -->
+<section id="landingView" class="view selection-view">
+  <section class="summary-card selection-summary">
+    <div class="summary-heading"><div><h1>Payment Summary</h1><p class="summary-sub">Please review your payment details before proceeding.</p></div><div class="summary-amount"><span>Amount</span><strong>RM 100.00</strong></div></div>
+    <div class="summary-details">
+      <div class="summary-row"><span>Transaction No</span><strong>ZP26090904307570 <button class="copy" type="button"><img src="assets/copy-icon_white.svg" alt=""></button></strong></div>
+      <div class="summary-row"><span>Created Date &amp; Time</span><strong>10 Sep 2026, 2:45 PM</strong></div>
+      <div class="summary-row"><span>Order No</span><strong>249 MY06-252-26-672</strong></div>
+    </div>
+    <button class="important" data-notes="landingNotes" type="button"><span class="important-left"><i class="info-icon">i</i><span>Important Notes</span></span><img class="dropdown-icon" src="assets/icn-dropdown-w.svg" alt=""></button>
+    <div class="important-content" id="landingNotes"><ul><li>Kindly ensure your selected payment method is active and ready for payment.</li><li>Kindly ensure you have sufficient funds.</li><li>Please do not refresh your browser.</li><li>Please do not click any submit button more than once.</li></ul></div>
+  </section>
+
+  <section class="method-card">
+    <div class="section-head"><div class="section-icon"><img src="assets/icn-wallet.svg" alt=""></div><div><h1>Select Payment Method</h1><p>Choose your preferred payment method to proceed.</p></div></div>
+    <div class="method-grid">
+      <button class="method" data-method="bank" type="button"><span class="method-icon"><img src="assets/icn-bank.svg" alt=""></span><strong>Banks</strong><small>FPX Online Banking</small><span class="check">✓</span></button>
+      <button class="method" data-method="wallet" type="button"><span class="method-icon"><img src="assets/icn-wallet.svg" alt=""></span><strong>E-Wallet</strong><small>GrabPay, TNG, ShopeePay &amp; Boost</small><span class="check">✓</span></button>
+      <button class="method" data-method="duitnow" type="button"><span class="method-icon"><img src="assets/icn-duitnow-s.svg" alt=""></span><strong>DuitNow QR</strong><small>Scan QR to pay</small><span class="check">✓</span></button>
+    </div>
+    <button class="proceed" id="methodProceed" type="button">Select a Payment Method <img src="assets/icn-arrow-w.svg" alt=""></button>
+  </section>
+</section>
+
+<!-- BANK -->
+<section id="bankView" class="view selection-view hidden">
+  <section class="summary-card selection-summary">
+    <div class="summary-heading"><div><h1>Payment Summary</h1><p class="summary-sub">Please review your payment details before proceeding.</p></div><div class="summary-amount"><span>Amount</span><strong>RM 100.00</strong></div></div>
+    <div class="summary-details"><div class="summary-row"><span>Transaction No</span><strong>ZP26090904307570</strong></div><div class="summary-row"><span>Created Date &amp; Time</span><strong>10 Sep 2026, 2:45 PM</strong></div><div class="summary-row"><span>Order No</span><strong>249 MY06-252-26-672</strong></div></div>
+    <button class="important" data-notes="bankNotes" type="button"><span class="important-left"><i class="info-icon">i</i><span>Important Notes</span></span><img class="dropdown-icon" src="assets/icn-dropdown-w.svg" alt=""></button>
+    <div class="important-content" id="bankNotes"><ul><li>Kindly ensure your bank account is active for online payment.</li><li>Kindly ensure you have sufficient funds in your account.</li><li>Please do not refresh your browser.</li></ul></div>
+  </section>
+  <section class="select-card">
+    <div class="section-head"><div class="section-icon"><img src="assets/icn-bank.svg" alt=""></div><div><h1>Select Bank</h1><p>Choose your preferred bank to proceed with payment.</p></div></div>
+    <div class="bank-grid" id="bankGrid"></div><div class="dots" id="bankDots"></div>
+    <button class="proceed" id="bankProceed" type="button">Select a Bank <img src="assets/icn-arrow-w.svg" alt=""></button>
+    <div class="redirect"><img src="assets/icn-secure.svg" /> You will be redirected to your bank's secure site.</div>
+  </section>
+</section>
+
+<!-- WALLET -->
+<section id="walletView" class="view selection-view hidden">
+  <section class="summary-card selection-summary">
+    <div class="summary-heading"><div><h1>Payment Summary</h1><p class="summary-sub">Please review your payment details before proceeding.</p></div><div class="summary-amount"><span>Amount</span><strong>RM 100.00</strong></div></div>
+    <div class="summary-details"><div class="summary-row"><span>Transaction No</span><strong>ZP26090904307570</strong></div><div class="summary-row"><span>Created Date &amp; Time</span><strong>10 Sep 2026, 2:45 PM</strong></div><div class="summary-row"><span>Order No</span><strong>249 MY06-252-26-672</strong></div></div>
+    <button class="important" data-notes="walletNotes" type="button"><span class="important-left"><i class="info-icon">i</i><span>Important Notes</span></span><img class="dropdown-icon" src="assets/icn-dropdown-w.svg" alt=""></button>
+    <div class="important-content" id="walletNotes"><ul><li>Kindly ensure your wallet account is active and ready for payment.</li><li>Kindly ensure you have sufficient funds.</li><li>Please do not refresh your browser.</li></ul></div>
+  </section>
+  <section class="select-card">
+    <div class="section-head"><div class="section-icon"><img src="assets/icn-wallet.svg" alt=""></div><div><h1>Select Wallet</h1><p>Choose your preferred wallet to proceed with payment.</p></div></div>
+    <div class="wallet-grid" id="walletGrid"></div><!--<div class="dots" id="walletDots"></div>-->
+    <button class="proceed" id="walletProceed" type="button">Select a Wallet <img src="assets/icn-arrow-w.svg" alt=""></button>
+    <div class="redirect"><img src="assets/icn-secure.svg" /> You will be redirected to your wallet's secure site.</div>
+  </section>
+</section>
+
+<!-- DUITNOW SELECTION -->
+<section id="duitnowView" class="view selection-view hidden">
+  <section class="summary-card selection-summary">
+    <div class="summary-heading"><div><h1>Payment Summary</h1><p class="summary-sub">Please review your payment details before proceeding.</p></div><div class="summary-amount"><span>Amount</span><strong>RM 100.00</strong></div></div>
+    <div class="summary-details"><div class="summary-row"><span>Transaction No</span><strong>ZP26090904307570</strong></div><div class="summary-row"><span>Created Date &amp; Time</span><strong>10 Sep 2026, 2:45 PM</strong></div><div class="summary-row"><span>Order No</span><strong>249 MY06-252-26-672</strong></div></div>
+  </section>
+  <section class="select-card">
+    <div class="section-head"><div class="section-icon"><img src="assets/icn-duitnow-s.svg" alt=""></div><div><h1>Select DuitNow</h1><p>Select DuitNow QR to proceed with payment.</p></div></div>
+    <div class="bank-grid duitnow-grid"><button class="duitnow-option selected" id="duitnowOption" type="button"><img src="assets/icn-duitnow.svg" alt="DuitNow"><span class="check">✓</span></button></div>
+    <button class="proceed" id="duitnowProceed" type="button">Proceed with DuitNow QR <img src="assets/icn-arrow-w.svg" alt=""></button>
+    <div class="redirect">♧ &nbsp; You will be shown a QR code for payment.</div>
+  </section>
+</section>
+
+<!-- QR PAYMENT -->
+<section id="qrView" class="view qr-view hidden">
+  <div class="qr-card">
+    <div class="wallet-brand">
+      <img id="qrBrandLogo" src="assets/icn-duitnow.svg" alt="DuitNow"><span id="qrBrandName" class="qr-brand-name qr-brand-name-hidden">DuitNow</span>
+    </div>
+
+    <div class="scan-section">
+      <div class="qr-box">
+        <img src="assets/QR.jpg" alt="Payment QR">
+      </div>
+
+      <p class="qr-instruction">Kindly scan the QR code below to proceed with payment.</p>
+      <p class="qr-note">Do Not Refresh!</p>
+
+      <div class="countdown">
+        <img src="assets/icn-timer.svg" alt="">
+        <div>
+          <small>Complete payment within</small>
+          <strong id="qrTimer">01:00 minutes</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-summary">
+      <div class="merchant">
+        <img src="assets/icn-merchant.svg" alt="">
+        <div>
+          <small>You are paying to</small>
+          <strong>YourBrand Sdn. Bhd.</strong>
+        </div>
+      </div>
+
+      <div class="qr-row">
+        <span>Transaction No</span>
+        <strong>ZP26090904307570 <span class="copy-mark"><img src="assets/copy-icon_white.svg" /></span></strong>
+      </div>
+
+      <div class="qr-row">
+        <span>Created Date &amp; Time</span>
+        <strong>10 Sep 2026, 2:45 PM</strong>
+      </div>
+
+      <div class="qr-row">
+        <span>Order No</span>
+        <strong>249 MY06-252-26-672</strong>
+      </div>
+
+      <div class="qr-row amount">
+        <span>Amount</span>
+        <strong>RM 100.00</strong>
+      </div>
+    </div>
+
+    <button class="cancel qr-cancel" id="qrConfirm" type="button">Confirm and Pay</button>
+  </div>
+</section>
+
+<!-- DUITNOW TIME EXPIRED / FAILED -->
+<section id="failView" class="view fail-view hidden">
+  <section class="fail-card fail-animate">
+    <div class="fail-brand"><img id="failBrandLogo" src="assets/icn-duitnow.svg" alt="DuitNow"><span id="failBrandName">DuitNow</span></div>
+
+    <div class="fail-icon" aria-hidden="true">×</div>
+
+    <h1>Payment Unsuccessful</h1>
+    <p class="fail-message">Your transaction was declined or timed out during authorization.</p>
+
+    <button class="proceed fail-return" id="failRetry" type="button">
+      Return to Merchant
+    </button>
+  </section>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
